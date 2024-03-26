@@ -287,7 +287,14 @@ def main(pid, queue, make_path):
 if __name__ == "__main__":
     # 设置进程数
     process_num = 4
-    process_list = []
+    # 生成印章数量
+    seal_num = 50
+    # 上圈文字个数范围
+    up_num = (4,8)
+    # 中间行文字个数范围
+    mid_num = (2,4)
+    # 下圈数字个数范围
+    down_num = (3,10)
     
     ch_dict_path = 'all_dicts/hospital.txt'
     make_path = 'make_data'
@@ -297,16 +304,17 @@ if __name__ == "__main__":
 
     os.makedirs(make_path, exist_ok=True)
     f = open(os.path.join(make_path, 'all.txt'), 'w', encoding='utf-8')
-    for index in range(30):
-        words_up = words_process.get_txt_chinese(char_len=(4, 8))
-        words_mid = words_process.get_txt_chinese(char_len=(2,5))
-        words_down = words_process.get_txt_number(char_len=(3,10))
+    for index in range(seal_num):
+        words_up = words_process.get_txt_chinese(char_len=up_num)
+        words_mid = words_process.get_txt_chinese(char_len=mid_num)
+        words_down = words_process.get_txt_number(char_len=down_num)
         words = (words_up, words_mid, words_down)
         queue.put((index, words))
         f.write(f'{index}.png\t{words_up}#{words_mid}#{words_down}\n')
         f.write(f'{index}.jpg\t{words_up}#{words_mid}#{words_down}\n')
     f.close()
 
+    process_list = []
     for pid in range(process_num):
         p = Process(target=main, args=(pid, queue, make_path), daemon=True)
         p.start()
