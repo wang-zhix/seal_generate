@@ -183,7 +183,8 @@ class Stamp:
                  width=self.border)
 
         # 绘制多边形
-        draw.polygon(pentagram(self.R + self.edge, self.R + self.edge, self.r), fill=self.fill, outline=self.fill)
+        if random.uniform(0, 1) < 0.5:
+            draw.polygon(pentagram(self.R + self.edge, self.R + self.edge, self.r), fill=self.fill, outline=self.fill)
 
         # 绘制上圈文字
         angle_word = self.angle_up / len(self.words_up)
