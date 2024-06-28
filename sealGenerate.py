@@ -397,15 +397,15 @@ if __name__ == "__main__":
     process_num = 4 # 设置进程数
     seal_num = 40 # 生成印章数量
     up_num = (4,20) # 上圈文字个数范围
-    mid_num = (3,9) # 中间行文字个数范围
+    mid_num = (3,5) # 中间行文字个数范围
     down_num = (3,8) # 下圈数字个数范围
-    
-    dict_path = 'dicts/hospital.txt'
-    make_path = 'make_data'
-    wl_path = "wl_images"
-    bg_path = "bg_images"
-    font_path = "fonts"
-    txt_name = 'make_data.txt'
+
+    dict_path = 'dicts/hospital.txt' # 字典路径
+    make_path = 'make_data' # 生成数据保存路径
+    wl_path = "wl_images" # 纹理图片路径（没有使用）
+    bg_path = "bg_images" # 背景图片路径
+    font_path = "fonts" # 字体文件路径
+    txt_name = 'make_data.txt' # 生成数据保存文件名
 
     wl_image_path_list = get_files_list(wl_path)
     bg_image_path_list = get_files_list(bg_path)
