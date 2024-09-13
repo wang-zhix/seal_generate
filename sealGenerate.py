@@ -232,6 +232,11 @@ class Stamp:
         #         dot = (l, h)
         #         img.putpixel(dot, img.getpixel(dot)[:3] + (int(img_wl_random.getpixel(dot) / 255 * img.getpixel(dot)[3]*2.5),))
         # # 进行一次高斯模糊，提高真实度
+
+        # 随机旋转
+        if random.uniform(0, 1) < 0.5:
+            img = img.rotate(randint(0, 360))
+
         self.img = img.filter(ImageFilter.GaussianBlur(0.6))
 
     def show_stamp(self):
