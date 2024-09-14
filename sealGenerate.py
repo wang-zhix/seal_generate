@@ -235,7 +235,7 @@ class Stamp:
 
         # 随机旋转
         if random.uniform(0, 1) < 0.5:
-            img = img.rotate(randint(0, 360))
+            img = img.rotate(randint(0, 360), fillcolor=(255, 255, 255, 0))
 
         self.img = img.filter(ImageFilter.GaussianBlur(0.6))
 
